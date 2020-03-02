@@ -1,0 +1,62 @@
+﻿@model DatosAlumnos
+@{
+    ViewData["Title"] = "EliminarAlumno";
+    int X = 0;
+}
+
+<h1>Eliminar Alumno</h1>
+
+@foreach (var data in Model.Alumnos)
+{
+    if (data.Boleta_Alumno == ViewBag.IDAlumno)
+    {
+        X = 1;
+        break;
+    }
+}
+@if (X == 1)
+{
+    <a class="alert-link" asp-action="AgregarAlumno">¿Quieres agregar un Alumno?</a>
+    <br />
+    <br />
+    <div class="col-6 formulario">
+        <form method="post" role="form">
+            <div class="form-group">
+                <h5>Boletin</h5>
+                <input id="ID" value="@ViewData["ID"]" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <h5>Nombre</h5>
+
+                <input value="@ViewData["Nombre"]" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <h5>Frecha de Nacimientos</h5>
+                <input value="@ViewData["Fecha_Nac"]" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <h5>CURP</h5>
+                <input value="@ViewData["CURP"]" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <h5>ID Maestria</h5>
+                <input value="@ViewData["ID_Maestria"]" class="form-control" readonly />
+            </div>
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a class="btn btn-primary" asp-controller="Alumnos" asp-action="ModificarAlumno">Ir a Modificacion</a>
+        </form>
+    </div>
+
+}
+else
+{
+    <hr />
+    <br />
+    <br />
+    <br />
+
+    <div class="text-center">
+        <h3><span class="text-danger">Debes seleccionar un Alumno.</span></h3>
+        <a class="alert-link" asp-controller="Alumnos" asp-action="ModificarAlumno">Volver</a>
+    </div>
+}

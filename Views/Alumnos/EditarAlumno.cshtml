@@ -1,0 +1,78 @@
+﻿@model AlumnosM
+@{
+    ViewData["Title"] = "EditarAlumno";
+    DatosAlumnos datosAlumnos = new DatosAlumnos();
+    DatosMaestrias datosMaestrias = new DatosMaestrias();
+
+    int X = 0;
+
+}
+
+<h1>Editar Alumno</h1>
+@foreach (var data in datosAlumnos.Alumnos)
+{
+    if (data.Boleta_Alumno == ViewBag.IDAlumno)
+    {
+        X = 1;
+        break;
+    }
+}
+@if (X == 1)
+{
+    <a class="alert-link" asp-action="AgregarAlumno">¿Quieres agregar un Alumno?</a>
+    <br />
+    <br />
+    <div class="col-6 formulario">
+        <form method="post" role="form">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <h5>Boleta</h5>
+                <input id="ID" asp-for="Boleta_Alumno" value="@ViewData["ID"]" class="form-control" readonly />
+                <span asp-validation-for="Boleta_Alumno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h5>Nombre</h5>
+                <input asp-for="Nombre_Alumno" value="@ViewData["Nombre"]" class="form-control" required />
+                <span asp-validation-for="Nombre_Alumno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h5>Fecha de Nacimiento</h5>
+                <input asp-for="Fecha_Nacimiento" value="@ViewData["Fecha_Nac"]" type="date" class="form-control" required />
+                <span asp-validation-for="Fecha_Nacimiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h5>CURP</h5>
+                <input asp-for="CURP_Alumno" value="@ViewData["CURP"]"  class="form-control" maxlength="13" placeholder="000-0000000-0" pattern="[0-9]{3}[ -][0-9]{7}[ -][0-9]{1}" title="Formato: 000-000-0000" required />
+                <span asp-validation-for="CURP_Alumno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h5>ID Maestria</h5>
+                <select asp-for="ID_Maestria" class="form-control" required>
+                    <option selected>@ViewData["ID_Maestria"]</option>
+                    @foreach (var Data in datosMaestrias.Maestrias)
+                    {
+                        <option>@Data.ID_Maestria</option>
+                    }
+                </select>
+                <span asp-validation-for="ID_Maestria" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Guardar</button>
+
+            <a class="btn btn-primary" asp-controller="Alumnos" asp-action="ModificarAlumno">Ir a Modificación</a>
+        </form>
+    </div>
+
+}
+else
+{
+    <hr />
+    <br />
+    <br />
+    <br />
+
+    <div class="text-center">
+        <h3><span class="text-danger">Debes seleccionar un Alumno.</span></h3>
+        <a class="alert-link" asp-controller="Alumnos" asp-action="ModificarAlumno">Volver</a>
+    </div>
+}

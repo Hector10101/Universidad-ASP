@@ -1,0 +1,67 @@
+﻿@model AlumnosM
+@{
+    ViewData["Title"] = "AgregarAlumno";
+    DatosMaestrias datosMaestrias = new DatosMaestrias();
+    ViewBag.IDMaestria = datosMaestrias.Maestrias;
+}
+
+<h1>Agregar Alumno</h1>
+
+<hr />
+<br />
+
+<div class="row">
+    <div class="col-5">
+        <form method="post" asp-action="AgregarAlumno">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <h5>Boleta</h5>
+                <input class="form-control" asp-for="Boleta_Alumno" />
+                <span class="text-danger">@ViewData["IDInValido"]</span>
+                <span asp-validation-for="Boleta_Alumno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h5>Nombre</h5>
+                <input class="form-control" asp-for="Nombre_Alumno" />
+                <span asp-validation-for="Nombre_Alumno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h5>Fecha de Nacimiento</h5>
+                <input class="form-control" asp-for="Fecha_Nacimiento" type="date" />
+                <span asp-validation-for="Fecha_Nacimiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h5>CURP</h5>
+                <input asp-for="CURP_Alumno" class="form-control " maxlength="13" placeholder="000-0000000-0" pattern="[0-9]{3}[ -][0-9]{7}[ -][0-9]{1}" title="Formato: 000-000-0000" />
+                <span asp-validation-for="CURP_Alumno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h5>ID Maestria</h5>
+                <select asp-for="ID_Maestria" class="form-control" id="exampleFormControlSelect1">
+                    @foreach (var Maestria in (List<MaestriaM>)ViewBag.IDMaestria)
+                    {
+                        <option>@Maestria.ID_Maestria </option>
+                    }
+                </select>
+                <span asp-validation-for="ID_Maestria" class="text-danger"></span>
+            </div>
+            @if (ViewBag.IDMaestria.Count != 0)
+            {
+                <button type="submit" class="btn btn-primary">Agregar</button>
+            }
+
+        </form>
+
+    </div>
+    @if (ViewBag.IDMaestria.Count == 0)
+    {
+        <div class="col-7 text-center">
+            <br />
+            <br />
+            <br />
+            <h3><span class="text-danger">Debes tener alguna Maestria</span></h3>
+            <a class="alert-link" asp-controller="Maestrias" asp-action="AgregarMaestria"> Ir a agregar una Maestria</a>
+        </div>
+    }
+</div>
+
