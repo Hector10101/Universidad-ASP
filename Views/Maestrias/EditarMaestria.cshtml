@@ -1,0 +1,78 @@
+﻿@model MaestriaM
+@{
+    ViewData["Title"] = "EditarMaestria";
+    DatosMaestrias datosMaestrias = new DatosMaestrias();
+    DatosDocentes datosDocentes = new DatosDocentes();
+    int X = 0;
+}
+
+<h1>Editar Maestria</h1>
+
+@foreach (var maestria in datosMaestrias.Maestrias)
+{
+    if (maestria.ID_Maestria == ViewBag.IDMaestria)
+    {
+        X = 1;
+        break;
+    }
+}
+@if (X == 1)
+{
+    <a class="alert-link" asp-action="AgregarMaestria">¿Quieres agregar una Maestria?</a>
+    <br />
+    <br />
+    <div class="col-6 formulario">
+        <form method="post" role="form">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <h5>ID</h5>
+                <input id="ID" asp-for="ID_Maestria" value="@ViewData["ID"]" class="form-control" readonly />
+                <span asp-validation-for="ID_Maestria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h5>Nombre</h5>
+                <input asp-for="Nombre_Maestria" value="@ViewData["Nombre"]" class="form-control" required />
+                <span asp-validation-for="Nombre_Maestria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h5>Duración</h5>
+                <select asp-for="Duracion" class="form-control" id="exampleFormControlSelect1">
+                    <option selected>@ViewData["Duracion"]</option>
+                    <option>1 Año</option>
+                    <option>1.5 Año</option>
+                    <option>2 Años</option>
+                    <option>2.5 Años</option>
+                    <option>3 Años</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <h5>ID Docente</h5>
+                <select asp-for="ID_Docente" class="form-control" required>
+                    <option selected>@ViewData["ID_Docente"]</option>
+                    @foreach (var docente in datosDocentes.Docentes)
+                    {
+                        <option>@docente.ID_Docente</option>
+                    }
+                </select>
+                <span asp-validation-for="ID_Docente" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Guardar</button>
+
+            <a class="btn btn-primary" asp-controller="Maestias" asp-action="ModificarMaestria">Ir a Modificación</a>
+        </form>
+    </div>
+
+}
+else
+{
+    <hr />
+    <br />
+    <br />
+    <br />
+
+    <div class="text-center">
+        <h3><span class="text-danger">Debes seleccionar una Maestria.</span></h3>
+        <a class="alert-link" asp-controller="Maestrias" asp-action="ModificarMaestria">Volver</a>
+    </div>
+}

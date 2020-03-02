@@ -1,0 +1,58 @@
+﻿@model DatosMaestrias
+@{
+    ViewData["Title"] = "EliminarMaestria";
+    int X = 0;
+}
+
+<h1>Eliminar Maestria</h1>
+
+@foreach (var maestria in Model.Maestrias)
+{
+    if (maestria.ID_Maestria == ViewBag.IDMaestria)
+    {
+        X = 1;
+        break;
+    }
+}
+@if (X == 1)
+{
+    <a class="alert-link" asp-action="AgregarMaestria">¿Quieres agregar una maestria?</a>
+    <br />
+    <br />
+    <div class="col-6 formulario">
+        <form method="post" role="form">
+            <div class="form-group">
+                <h5>ID</h5>
+                <input id="ID" value="@ViewData["ID"]" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <h5>Nombre</h5>
+
+                <input value="@ViewData["Nombre"]" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <h5>Duración</h5>
+                <input value="@ViewData["Duracion"]" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <h5>ID Docente</h5>
+                <input value="@ViewData["ID_Docente"]" class="form-control" readonly />
+            </div>
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a class="btn btn-primary" asp-controller="Maestrias" asp-action="ModificarMaestria">Ir a Modificación</a>
+        </form>
+    </div>
+
+}
+else
+{
+    <hr />
+    <br />
+    <br />
+    <br />
+
+    <div class="text-center">
+        <h3><span class="text-danger">Debes seleccionar una Maestria.</span></h3>
+        <a class="alert-link" asp-controller="Maestrias" asp-action="ModificarMaestria">Volver</a>
+    </div>
+}

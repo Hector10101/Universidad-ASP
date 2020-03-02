@@ -1,0 +1,68 @@
+﻿@model MaestriaM
+@{
+    ViewData["Title"] = "AgregarMaestria";
+    DatosDocentes datosDocentes = new DatosDocentes();
+    ViewBag.IDdocente = datosDocentes.Docentes;
+}
+
+<h1>Agregar Maestria</h1>
+
+<hr />
+<br />
+
+<div class="row">
+    <div class="col-5">
+        <form method="post" asp-controller="Maestrias" asp-action="AgregarMaestria">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <h5>ID</h5>
+                <input class="form-control" asp-for="ID_Maestria" />
+                <span class="text-danger">@ViewData["IDInValido"]</span>
+                <span asp-validation-for="ID_Maestria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h5>Nombre</h5>
+                <input class="form-control" asp-for="Nombre_Maestria" />
+                <span asp-validation-for="Nombre_Maestria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h5>Duración</h5>
+                <select asp-for="Duracion" class="form-control" id="exampleFormControlSelect1">
+                    <option>1 Año</option>
+                    <option>1.5 Año</option>
+                    <option>2 Años</option>
+                    <option>2.5 Años</option>
+                    <option>3 Años</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <h5>ID Docente</h5>
+                <select asp-for="ID_Docente" class="form-control" id="exampleFormControlSelect2">
+                    @foreach (var docente in (List<DocentesM>)ViewBag.IDdocente)
+                    {
+                        <option>@docente.ID_Docente</option>
+                    }
+                </select>
+                <span asp-validation-for="ID_Docente" class="text-danger"></span>
+            </div>
+            @if (ViewBag.IDdocente.Count != 0)
+            {
+                <button type="submit" class="btn btn-primary">Agregar</button>
+            }
+
+        </form>
+
+    </div>
+    @if (ViewBag.IDdocente.Count == 0)
+    {
+        <div class="col-7 text-center">
+            <br />
+            <br />
+            <br />
+            <h3><span class="text-danger">Debes tener algun Docente</span></h3>
+            <a class="alert-link" asp-controller="Docentes" asp-action="AgregarDocente"> Ir a agregar un Docente</a>
+        </div>
+    }
+</div>
+

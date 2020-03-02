@@ -120,3 +120,8 @@ C:\Users\Hector Sanchez\source\repos\Universidad_ASP\obj\Debug\netcoreapp3.1\Raz
 C:\Users\Hector Sanchez\source\repos\Universidad_ASP\obj\Debug\netcoreapp3.1\Razor\Views\Docentes\ModificarDocente.cshtml.g.cs
 C:\Users\Hector Sanchez\source\repos\Universidad_ASP\obj\Debug\netcoreapp3.1\Razor\Views\Docentes\EditarDocente.cshtml.g.cs
 C:\Users\Hector Sanchez\source\repos\Universidad_ASP\obj\Debug\netcoreapp3.1\Razor\Views\Docentes\EliminarDocente.cshtml.g.cs
+C:\Users\Hector Sanchez\source\repos\Universidad_ASP\obj\Debug\netcoreapp3.1\Razor\Views\Maestrias\AgregarMaestria.cshtml.g.cs
+C:\Users\Hector Sanchez\source\repos\Universidad_ASP\obj\Debug\netcoreapp3.1\Razor\Views\Maestrias\VerMaestrias.cshtml.g.cs
+C:\Users\Hector Sanchez\source\repos\Universidad_ASP\obj\Debug\netcoreapp3.1\Razor\Views\Maestrias\ModificarMaestria.cshtml.g.cs
+C:\Users\Hector Sanchez\source\repos\Universidad_ASP\obj\Debug\netcoreapp3.1\Razor\Views\Maestrias\EditarMaestria.cshtml.g.cs
+C:\Users\Hector Sanchez\source\repos\Universidad_ASP\obj\Debug\netcoreapp3.1\Razor\Views\Maestrias\EliminarMaestria.cshtml.g.cs
