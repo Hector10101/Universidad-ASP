@@ -115,3 +115,8 @@ C:\Users\Hector Sanchez\source\repos\Universidad_ASP\obj\Debug\netcoreapp3.1\Raz
 C:\Users\Hector Sanchez\source\repos\Universidad_ASP\obj\Debug\netcoreapp3.1\Razor\Views\Universidades\VerUniversidad.cshtml.g.cs
 C:\Users\Hector Sanchez\source\repos\Universidad_ASP\obj\Debug\netcoreapp3.1\Razor\Views\Universidades\EditarUniversidad.cshtml.g.cs
 C:\Users\Hector Sanchez\source\repos\Universidad_ASP\obj\Debug\netcoreapp3.1\Razor\Views\Universidades\EliminarUniversidad.cshtml.g.cs
+C:\Users\Hector Sanchez\source\repos\Universidad_ASP\obj\Debug\netcoreapp3.1\Razor\Views\Docentes\AgregarDocente.cshtml.g.cs
+C:\Users\Hector Sanchez\source\repos\Universidad_ASP\obj\Debug\netcoreapp3.1\Razor\Views\Docentes\VerDocentes.cshtml.g.cs
+C:\Users\Hector Sanchez\source\repos\Universidad_ASP\obj\Debug\netcoreapp3.1\Razor\Views\Docentes\ModificarDocente.cshtml.g.cs
+C:\Users\Hector Sanchez\source\repos\Universidad_ASP\obj\Debug\netcoreapp3.1\Razor\Views\Docentes\EditarDocente.cshtml.g.cs
+C:\Users\Hector Sanchez\source\repos\Universidad_ASP\obj\Debug\netcoreapp3.1\Razor\Views\Docentes\EliminarDocente.cshtml.g.cs

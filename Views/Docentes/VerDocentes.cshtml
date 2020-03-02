@@ -1,0 +1,48 @@
+﻿@model DatosDocentes
+@{
+    ViewData["Title"] = "VerDocentes";
+}
+
+<h1>Docentes</h1>
+
+@if (Model.Docentes.Count > 0)
+{
+    <div>
+        <a class="alert-link" asp-controller="Docentes" asp-action="AgregarDocente"> ¿Quieres agregar un Docente?</a>
+    </div>
+}
+<br />
+
+<div>
+    <div>
+        <table class="table table-striped ">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <th>ID Universidad</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var docentes in Model.Docentes)
+                {
+                    <tr>
+                        <td>@docentes.ID_Docente</td>
+                        <td>@docentes.Nombre_Docente</td>
+                        <td>@docentes.Telefono</td>
+                        <td>@docentes.ID_Universidad</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @if (Model.Docentes.Count == 0)
+        {
+            <div class="text-center">
+                <h4><span class="text-danger">No Existen Docentes.</span></h4>
+                <a class="alert-link" asp-controller="Docentes" asp-action="AgregarDocente">  ¿Quieres agregar un Docente?</a>
+            </div>
+        }
+    </div>
+</div>

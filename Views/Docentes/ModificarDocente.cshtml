@@ -1,0 +1,103 @@
+﻿@model DocentesM
+@{
+    ViewData["Title"] = "ModificarDocente";
+    DatosDocentes datosDocentes = new DatosDocentes();
+}
+
+<h1>Modificar Docente</h1>
+
+@if (datosDocentes.Docentes.Count > 0)
+{
+    <a class="alert-link" asp-action="AgregarDocente">¿Quieres agregar un Docente?</a>
+}
+
+<br />
+<br />
+<div class="row">
+    <div class="col-6 formulario">
+        <form method="post" role="form">
+            <div class="form-group">
+                <h5>ID</h5>
+                <input asp-for="ID_Docente" value="@ViewData["ID"]" class="form-control" readonly Required />
+            </div>
+            <div class="form-group">
+                <h5>Nombre</h5>
+                <input value="@ViewData["Nombre"]" class="form-control" readonly Required />
+            </div>
+            <div class="form-group">
+                <h5>Teléfono</h5>
+                <input value="@ViewData["Telefono"]" class="form-control" readonly Required />
+            </div>
+            <div class="form-group">
+                <h5>ID Universidad</h5>
+                <input value="@ViewData["ID_Uni"]" class="form-control" readonly Required />
+            </div>
+
+            @if (datosDocentes.Docentes.Count > 0)
+            {
+                <button name="Editar" value="0" class="btn btn-primary">Ir a Editar</button>
+                <button name="Eliminar" value="1" class="btn btn-danger">Ir a Eliminar</button>
+            }
+
+
+        </form>
+    </div>
+
+    <div class="col-6 ">
+        <h5 class="text-primary">Selecciona el Producto</h5>
+        <form class="row" method="post">
+            <select name="posicion" id="opciones" class="col-9 form-control">
+                <option value="" selected>Selecciona</option>
+                @foreach (var docente in datosDocentes.Docentes)
+                {
+                    <option value="@docente.ID_Docente">ID: @docente.ID_Docente ; Nombre: @docente.ID_Docente;  </option>
+
+                }
+            </select>
+            <div class="col-3">
+                <button name="ver" class="btn btn-primary" type="submit">Seleccionar</button>
+            </div>
+        </form>
+        <br />
+        <br />
+
+        @if (datosDocentes.Docentes.Count > 0)
+        {
+            <table class="table table-striped ">
+                <thead class="badge-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>ID Universidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var docente in datosDocentes.Docentes)
+                    {
+                        <tr>
+                            <td>@docente.ID_Docente</td>
+                            <td>@docente.Nombre_Docente</td>
+                            <td>@docente.ID_Universidad</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="text-md-right">
+                <a class="btn btn-primary" asp-controller="Docentes" asp-action="VerDocentes">Más detalles</a>
+            </div>
+        }
+        else
+        {
+            <div class="text-center">
+                <h4><span class="text-danger">No Existen Docentes.</span></h4>
+                <a class="alert-link" asp-controller="Docentes" asp-action="AgregarDocente">¿Quieres agregar un Docente?</a>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .formulario {
+        padding-right: 80px;
+    }
+</style>
