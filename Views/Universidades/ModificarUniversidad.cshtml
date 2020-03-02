@@ -1,0 +1,93 @@
+﻿@model UniversidadM
+@{
+    ViewData["Title"] = "ModificarUniversidad";
+    DatosUniversidades datosUniversidades = new DatosUniversidades();
+}
+
+<h1>Modificar Universidad</h1>
+
+@if (datosUniversidades.Universidades.Count > 0)
+{
+    <a class="alert-link" asp-action="AgregarUniversidad">¿Quieres agregar una Universidad?</a>
+}
+
+<br />
+<br />
+<div class="row">
+    <div class="col-6 formulario">
+        <form method="post" role="form">
+            <div class="form-group">
+                <h5>ID</h5>
+                <input asp-for="ID_Universidad" value="@ViewData["ID"]" class="form-control" readonly Required />
+            </div>
+            <div class="form-group">
+                <h5>Nombre</h5>
+                <input value="@ViewData["Nombre"]" class="form-control" readonly Required />
+            </div>
+            @if (datosUniversidades.Universidades.Count > 0)
+            {
+                <button name="Editar" value="0" type="submit" class="btn btn-primary">Ir a Editar</button>
+                <button name="Eliminar" value="1" type="submit" class="btn btn-danger">Ir a Eliminar</button>
+            }
+
+        </form>
+    </div>
+    <div class="col-6 ">
+        <h5 class="text-primary">Selecciona la Universidad</h5>
+        <form class="row" method="post">
+            <select name="Posicion" class="col-9 form-control">
+                <option value="" selected>Selecciona</option>
+                @foreach (var data in datosUniversidades.Universidades)
+                {
+
+                    <option value="@data.ID_Universidad">@data.ID_Universidad -  @data.Nombre_Universidad </option>
+
+                }
+            </select>
+            <div class="col-3">
+                <button name="ver" class="btn btn-primary" type="submit">Seleccionar</button>
+            </div>
+        </form>
+
+        <br />
+        <br />
+
+        @if (datosUniversidades.Universidades.Count > 0)
+        {
+            <table class="table table-striped ">
+                <thead class="badge-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var universidad in datosUniversidades.Universidades)
+                    {
+                        <tr>
+                            <td>@universidad.ID_Universidad</td>
+                            <td>@universidad.Nombre_Universidad</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="text-md-right">
+                <a class="btn btn-primary" asp-controller="Universidades" asp-action="VerUniversidad">Más detalles</a>
+            </div>
+        }
+        else
+        {
+            <div class="text-center">
+                <h4><span class="text-danger">No Existen Universidades.</span></h4>
+                <a class="alert-link" asp-controller="Universidades" asp-action="AgregarUniversidad">¿Quieres agregar una Universidad?</a>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .formulario {
+        padding-right: 80px;
+    }
+</style>
+

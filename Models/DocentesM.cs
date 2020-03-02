@@ -15,7 +15,7 @@ namespace Universidad_ASP.Models
         public string Nombre_Docente{ get; set; }
 
         [Required(ErrorMessage = "¡Este Campo debe ser completado!")]
-        public string Telefono { get; set; }
+        public string Telefono { get; set; }    
 
         [Required(ErrorMessage = "¡Este Campo debe ser completado!")]
         public string ID_Universidad { get; set; }
